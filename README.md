@@ -1,5 +1,59 @@
 # AlgoLab
+
+## Algorithms
+
+1. Linear Search:
+   - Start from the beginning of the array.
+   - Compare each element with the target value.
+   - If a match is found, return the index of the element.
+   - If the end of the array is reached without finding a match, return -1.
+
+2. Binary Search (for a sorted array):
+   - Set the low index to the beginning of the array and the high index to the end of the array.
+   - While the low index is less than or equal to the high index:
+     - Calculate the middle index as the average of the low and high indices.
+     - If the middle element is equal to the target, return the middle index.
+     - If the middle element is less than the target, update the low index to mid + 1.
+     - If the middle element is greater than the target, update the high index to mid - 1.
+   - If the target is not found, return -1.
+
+3. Bubble Sort:
+   - Start from the first element and compare it with the next element.
+   - If the current element is greater than the next element, swap them.
+   - Repeat this process for all elements in the array.
+   - Continue this process for each pass until the array is sorted.
+
+4. Insertion Sort:
+   - Start with the second element in the array.
+   - Compare the current element with the elements before it, moving them one position ahead if they are greater.
+   - Repeat this process for all elements until the array is sorted.
+
+5. Merge Sort:
+   - Divide the array into two halves.
+   - Recursively apply merge sort to each half.
+   - Merge the sorted halves by comparing elements and placing them in the correct order.
+
+6. Quick Sort:
+   - Choose a pivot element from the array (usually the last element).
+   - Partition the array into two parts: elements less than the pivot and elements greater than the pivot.
+   - Recursively apply quick sort to the two partitions.
+
+7. Depth-First Search (DFS):
+   - Start from a given vertex.
+   - Mark the vertex as visited and print its value.
+   - Explore its adjacent vertices recursively, following an arbitrary order.
+   - Repeat this process for each unvisited vertex until all vertices are visited.
+
+8. Breadth-First Search (BFS):
+   - Start from a given vertex.
+   - Mark the vertex as visited and enqueue it.
+   - While the queue is not empty:
+     - Dequeue a vertex from the queue and print its value.
+     - Enqueue all unvisited neighbors of the dequeued vertex.
+     - Mark the neighbors as visited.
+
 ## Time Complexities
+
 **Q1) Linear and Binary Search.**
 => **LINEAR SEARCH:**
 The best-case scenario for linear search occurs when the key is found at the beginning of the array, resulting in a complexity of O(1).
@@ -57,53 +111,3 @@ The worst case for DFS occurs when the goal node is located at the deepest level
 
 The average case for DFS depends on the structure and size of the graph. In a balanced tree or graph with a uniform branching factor, DFS will have a time complexity of O(V + E), similar to the worst case. However, if the graph is sparse or has a low average branching factor, the time complexity of DFS can be closer to O(V).
 
-# Algorithms
-1. Linear Search:
-   - Start from the beginning of the array.
-   - Compare each element with the target value.
-   - If a match is found, return the index of the element.
-   - If the end of the array is reached without finding a match, return -1.
-
-2. Binary Search (for a sorted array):
-   - Set the low index to the beginning of the array and the high index to the end of the array.
-   - While the low index is less than or equal to the high index:
-     - Calculate the middle index as the average of the low and high indices.
-     - If the middle element is equal to the target, return the middle index.
-     - If the middle element is less than the target, update the low index to mid + 1.
-     - If the middle element is greater than the target, update the high index to mid - 1.
-   - If the target is not found, return -1.
-
-3. Bubble Sort:
-   - Start from the first element and compare it with the next element.
-   - If the current element is greater than the next element, swap them.
-   - Repeat this process for all elements in the array.
-   - Continue this process for each pass until the array is sorted.
-
-4. Insertion Sort:
-   - Start with the second element in the array.
-   - Compare the current element with the elements before it, moving them one position ahead if they are greater.
-   - Repeat this process for all elements until the array is sorted.
-
-5. Merge Sort:
-   - Divide the array into two halves.
-   - Recursively apply merge sort to each half.
-   - Merge the sorted halves by comparing elements and placing them in the correct order.
-
-6. Quick Sort:
-   - Choose a pivot element from the array (usually the last element).
-   - Partition the array into two parts: elements less than the pivot and elements greater than the pivot.
-   - Recursively apply quick sort to the two partitions.
-
-7. Depth-First Search (DFS):
-   - Start from a given vertex.
-   - Mark the vertex as visited and print its value.
-   - Explore its adjacent vertices recursively, following an arbitrary order.
-   - Repeat this process for each unvisited vertex until all vertices are visited.
-
-8. Breadth-First Search (BFS):
-   - Start from a given vertex.
-   - Mark the vertex as visited and enqueue it.
-   - While the queue is not empty:
-     - Dequeue a vertex from the queue and print its value.
-     - Enqueue all unvisited neighbors of the dequeued vertex.
-     - Mark the neighbors as visited.
