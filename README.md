@@ -54,20 +54,15 @@
 
 ## Time Complexities
 
-**Q1) Linear and Binary Search.**
-=> **LINEAR SEARCH:**
-The best-case scenario for linear search occurs when the key is found at the beginning of the array, resulting in a complexity of O(1).
-
-The worst-case scenario happens when the key is either not present in the array or it is at the very end. In this case, the algorithm will need to iterate through all elements, resulting in a complexity of O(n), where n is the size of the array.
-
-The average case complexity for linear search is also O(n), as it may need to search through approximately half of the array on average.
-
-**BINARY SEARCH**
-The best-case scenario for binary search occurs when the key is found at the middle element of the array, resulting in a complexity of O(1).
-
-The worst-case scenario happens when the key is either not present in the array or it is at one of the ends. In this case, the algorithm will divide the search space in half at each step, resulting in a complexity of O(log n), where n is the size of the array.
-
-The average case complexity for binary search is also O(log n), as it halves the search space at each step, reducing the remaining elements to search exponentially.
+1. **Linear and Binary Search**
+> **LINEAR SEARCH:**<br>
+- The *best-case* scenario for linear search occurs when the key is found at the beginning of the array, resulting in a complexity of O(1).<br>
+- The *worst-case* scenario happens when the key is either not present in the array or it is at the very end. In this case, the algorithm will need to iterate through all elements, resulting in a complexity of O(n), where n is the size of the array.<br>
+- The *average case* complexity for linear search is also O(n), as it may need to search through approximately half of the array on average.<br>
+> **BINARY SEARCH:**<br>
+- The *best-case* scenario for binary search occurs when the key is found at the middle element of the array, resulting in a complexity of O(1).<br>
+- The *worst-case* scenario happens when the key is either not present in the array or it is at one of the ends. In this case, the algorithm will divide the search space in half at each step, resulting in a complexity of O(log n), where n is the size of the array.<br>
+- The *average case* complexity for binary search is also O(log n), as it halves the search space at each step, reducing the remaining elements to search exponentially.
 
 **Q2) Bubble Sort & Insertion Sort.**
 => **BUBBLE SORT**
