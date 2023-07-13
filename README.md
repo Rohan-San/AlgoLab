@@ -1,5 +1,5 @@
 # AlgoLab
-
+## Time Complexities
 **Q1) Linear and Binary Search.**
 => **LINEAR SEARCH:**
 The best-case scenario for linear search occurs when the key is found at the beginning of the array, resulting in a complexity of O(1).
@@ -57,8 +57,7 @@ The worst case for DFS occurs when the goal node is located at the deepest level
 
 The average case for DFS depends on the structure and size of the graph. In a balanced tree or graph with a uniform branching factor, DFS will have a time complexity of O(V + E), similar to the worst case. However, if the graph is sparse or has a low average branching factor, the time complexity of DFS can be closer to O(V).
 
-**ALGORITHMS**
-
+# Algorithms
 1. Linear Search:
    - Start from the beginning of the array.
    - Compare each element with the target value.
