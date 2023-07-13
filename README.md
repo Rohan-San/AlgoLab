@@ -1,5 +1,7 @@
 # AlgoLab
-
+Topics:<br>
+1. [Algorithms](#algorithms)<br>
+2. [Time Complexities](#time-complexities)
 ## Algorithms
 
 1. Linear Search:
