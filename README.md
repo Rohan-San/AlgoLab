@@ -1,4 +1,6 @@
 # AlgoLab
+Key Contributor: [@Kxitij](https://github.com/Kxitij)
+<br><br>
 Topics (Click to jump):
 1. [Algorithms](#algorithms)
    - [Linear Search](#linear-search)
