@@ -1,93 +1,134 @@
 #include <iostream>
-#include <algorithm>
-
+#include <string.h>
 using namespace std;
 
-const int V = 5;
-const int MAX_E = V * (V - 1) / 2;
-
-// Define a class to represent an edge in the graph
-class Edge {
+class Graph
+{
+    char vertices[10][10];
+    int cost[10][10], no;
 public:
-    int src, dest, weight;
-
-    Edge() : src(0), dest(0), weight(0) {}
-    Edge(int s, int d, int w) : src(s), dest(d), weight(w) {}
+    Graph();
+    void creat_graph();
+    void display();
+    int Position(char[]);
+    void kruskal_algo();
 };
 
-// Disjoint Set Union (DSU) data structure
-class DSU {
-private:
-    int parent[V];
-    int rank[V];
-
-public:
-    DSU() {
-        for (int i = 0; i < V; ++i) {
-            parent[i] = i;
-            rank[i] = 0;
+Graph::Graph()
+{
+    no = 0;
+    for (int i = 0; i < 10; i++)
+        for (int j = 0; j < 10; j++)
+        {
+            cost[i][j] = 999;
         }
-    }
+}
 
-    int find(int v) {
-        if (v != parent[v])
-            parent[v] = find(parent[v]);
-        return parent[v];
-    }
+void Graph::creat_graph()
+{
+    char ans, Start[10], End[10];
+    int wt, i, j;
+    cout << "Enter the number of vertices: ";
+    cin >> no;
+    cout << "\nEnter the vertices: ";
+    for (i = 0; i < no; i++)
+        cin >> vertices[i];
+    do
+    {
+        cout << "\nEnter Source, Destination, and Weight of the edge: ";
+        cin >> Start >> End >> wt;
+        i = Position(Start);
+        j = Position(End);
+        cost[i][j] = cost[j][i] = wt;
+        cout << "\nDo you want to add more edges (Y=YES/N=NO)? : ";
+        cin >> ans;
+    } while (ans == 'y' || ans == 'Y');
+}
 
-    void unite(int a, int b) {
-        int rootA = find(a);
-        int rootB = find(b);
-        if (rootA != rootB) {
-            if (rank[rootA] < rank[rootB])
-                swap(rootA, rootB);
-            parent[rootB] = rootA;
-            if (rank[rootA] == rank[rootB])
-                rank[rootA]++;
-        }
-    }
-};
-
-// Kruskal's algorithm to find the Minimum Spanning Tree
-void kruskalMST(Edge edges[], int E) {
-    sort(edges, edges + E, [](Edge& a, Edge& b) {
-        return a.weight < b.weight;
-    });
-
-    DSU dsu;
-
-    Edge mst[V - 1];
-    int mstSize = 0;
-    for (int i = 0; i < E && mstSize < V - 1; ++i) {
-        int srcRoot = dsu.find(edges[i].src);
-        int destRoot = dsu.find(edges[i].dest);
-
-        if (srcRoot != destRoot) {
-            mst[mstSize++] = edges[i];
-            dsu.unite(srcRoot, destRoot);
-        }
-    }
-
-    cout << "Minimum Spanning Tree edges:" << endl;
-    for (int i = 0; i < mstSize; ++i) {
-        cout << mst[i].src << " - " << mst[i].dest << " : " << mst[i].weight << endl;
+void Graph::display()
+{
+    int i, j;
+    cout << "\n\nCost matrix: ";
+    for (i = 0; i < no; i++)
+    {
+        cout << "\n";
+        for (j = 0; j < no; j++)
+            cout << "\t" << cost[i][j];
     }
 }
 
-int main() {
-    Edge edges[MAX_E] = {
-        Edge(0, 1, 2),
-        Edge(0, 3, 6),
-        Edge(1, 2, 3),
-        Edge(1, 3, 8),
-        Edge(1, 4, 5),
-        Edge(2, 4, 7),
-        Edge(3, 4, 9)
-    };
+int Graph::Position(char key[10])
+{
+    int i;
+    for (i = 0; i < 10; i++)
+        if (strcmp(vertices[i], key) == 0)
+            return i;
+    return -1;
+}
 
-    int E = 7; // Number of edges
+void Graph::kruskal_algo()
+{
+    int i, j, v[10] = {0}, x, y, Total_cost = 0, min, gr = 1, flag = 0, temp, d;
+    while (flag == 0)
+    {
+        min = 999;
+        for (i = 0; i < no; i++)
+        {
+            for (j = 0; j < no; j++)
+            {
+                if (cost[i][j] < min)
+                {
+                    min = cost[i][j];
+                    x = i;
+                    y = j;
+                }
+            }
+        }
+        if (v[x] == 0 && v[y] == 0)
+        {
+            v[x] = v[y] = gr;
+            gr++;
+        }
+        else if (v[x] != 0 && v[y] == 0)
+            v[y] = v[x];
+        else if (v[x] == 0 && v[y] != 0)
+            v[x] = v[y];
+        else
+        {
+            if (v[x] != v[y])
+            {
+                d = v[x];
+                for (i = 0; i < no; i++)
+                {
+                    if (v[i] == d)
+                        v[i] = v[y];
+                } // end for
+            }
+        }
+        cost[x][y] = cost[y][x] = 999;
+        Total_cost = Total_cost + min;
+        cout << "\n\t" << vertices[x] << "\t\t" << vertices[y] << "\t\t" << min;
+        temp = v[0];
+        flag = 1;
+        for (i = 0; i < no; i++)
+        {
+            if (temp != v[i])
+            {
+                flag = 0;
+                break;
+            }
+        }
+    }
+    cout << "\nTotal cost of the tree= " << Total_cost;
+}
 
-    kruskalMST(edges, E);
-
+int main()
+{
+    Graph g;
+    g.creat_graph();
+    g.display();
+    cout << "\n\n\nMinimum Spanning tree using kruskal algo=>";
+    cout << "\nSource vertex\tDestination vertex\tWeight\n";
+    g.kruskal_algo();
     return 0;
 }
