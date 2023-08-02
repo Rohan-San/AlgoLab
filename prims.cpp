@@ -1,4 +1,4 @@
-#include <iosrtream>
+#include <bits/stdc++.h> // Or use <iostream> & <climits>
 using namespace std;
 #define V 5
 
