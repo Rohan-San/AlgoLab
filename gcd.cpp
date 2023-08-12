@@ -13,7 +13,7 @@ long int middle_school(long int m, long int n)
             gcd = i;
     }
     end = clock();
-    cout << endl << "Time taken:" << (end - start) / CLOCKS_PER_SEC << " sec , GCD ";
+    cout << endl << "Time taken: " << double(end - start)/CLOCKS_PER_SEC << endl <<  "GCD: ";
     return gcd;
 }
 
@@ -29,7 +29,7 @@ long int euclid(long int m, long int n)
         n = r;
     }
     end = clock();
-    cout << endl << "Time taken:" << (end - start) / CLOCKS_PER_SEC << " sec , GCD ";
+    cout << endl << "Time taken: " << double(end - start)/CLOCKS_PER_SEC << endl <<  "GCD: ";
     return m;
 }
 
@@ -51,19 +51,17 @@ long int sub(long int m, long int n)
         }
     }
     end = clock();
-    cout << "Time taken :" << (end - start) / CLOCKS_PER_SEC << " sec , GCD ";
+    cout << endl << "Time taken: " << double(end - start)/CLOCKS_PER_SEC << endl <<  "GCD: ";
     return m;
 }
 
-main()
+int main()
 {
     long int x, y;
-    cout << "\t\t ANALYSIS OF THE TWO ALGORITHMS" << endl << endl;
-    cout << "GCD : " << endl;
-    cout << "enter two numbers:";
+    cout << "Enter two numbers: ";
     cin >> x >> y;
-    cout << endl << endl << "GCD-Middle School : " << middle_school(x, y);
-    cout << endl << endl << "GCD-Euclid : " << euclid(x, y);
-    cout << endl << endl << "------------------------------------------------";
-    cout << endl << endl << "GCD- subtraction : " << sub(x, y);
+    cout << "GCD-Middle School: " << middle_school(x, y) << endl;
+    cout << "GCD-Euclid: " << euclid(x, y) << endl;
+    cout << "GCD-Subtraction: " << sub(x, y) << endl;
+    return 0;
 }   
