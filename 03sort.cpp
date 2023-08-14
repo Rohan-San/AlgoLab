@@ -2,14 +2,14 @@
 #include <time.h>
 using namespace std;
 
-void display(int *array, int size)
+void display(int array[], int size)
 {
     for (int i = 0; i < size; i++)
         cout << array[i] << " ";
     cout << endl;
 }
 
-void insertionSort(int *array, int size)
+void insertionSort(int array[], int size)
 {
     int key, j;
     for (int i = 1; i < size; i++)
@@ -24,7 +24,7 @@ void insertionSort(int *array, int size)
         array[j] = key;
     }
 }
-void bubblesort(int *a, int size)
+void bubblesort(int a[], int size)
 {
     int i, j;
     for (i = 0; i < size - 1; i++)
@@ -50,12 +50,12 @@ int main()
     e1 = clock();
     cout << "(Insertion) Sorted Array: ";
     display(arr, n);
-    cout << "Time taken for Insertion sort:" << (double)(e1 - s1)/CLOCKS_PER_SEC << " sec" << endl;
+    cout << "Time taken for Insertion sort: " << (double)(e1 - s1)/CLOCKS_PER_SEC << endl;
     s2 = clock();
     bubblesort(arr, n);
     e2 = clock();
     cout << "(Bubble) Sorted Array: ";
     display(arr, n);
-    cout << "Time taken for Bubble sort: " << (double)(e2 - s2)/CLOCKS_PER_SEC << " sec" << endl;
+    cout << "Time taken for Bubble sort: " << (double)(e2 - s2)/CLOCKS_PER_SEC << endl;
     return 0;
 }
