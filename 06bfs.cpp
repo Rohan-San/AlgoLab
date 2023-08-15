@@ -1,44 +1,52 @@
-#include <bits/stdc++.h>
-using namespace std;
-using namespace std::chrono;
+#include<iostream>
+#include<ctime>
+#define MAX 100
 
-void BFS(int startVertex, int** graph, int numVertices) {
-    bool* visited = new bool[numVertices] {false};
-    queue<int> visitedQueue;
-    visitedQueue.push(startVertex);
-    visited[startVertex] = true;
-    while (!visitedQueue.empty()) {
-        int vertex = visitedQueue.front();
-        visitedQueue.pop();
-        cout << vertex << " ";
-        for (int i = 0; i < numVertices; ++i) {
-            if (graph[vertex][i] && !visited[i]) {
-                visitedQueue.push(i);
-                visited[i] = true;
+using namespace std;
+
+bool visited[MAX];
+int adj[MAX][MAX];
+
+void bfs(int start, int n)
+{
+    int queue[MAX];
+    int front = 0, rear=-1;
+    int v;
+    for (int i=0;i<n;i++)
+        visited[i] = false;
+    visited[start] = true;
+    queue[++rear] = start;
+    while(front<=rear)
+    {
+        v = queue[front++];
+        cout<<v<<" ";
+        for(int i=0;i<n;i++)
+        {
+            if(adj[v][i]&& !visited[i])
+            {
+                visited[i]=true;
+                queue[++rear]=i;    
             }
         }
     }
+    cout<<endl;
 }
 
-int main() {
-    const int numVertices = 7;
-    int** graph = new int*[numVertices];
-    for (int i = 0; i < numVertices; ++i) {
-        graph[i] = new int[numVertices] {0};
-    }
-    graph[0][1] = 1;
-    graph[0][2] = 1;
-    graph[1][3] = 1;
-    graph[1][4] = 1;
-    graph[2][5] = 1;
-    graph[2][6] = 1;
-    int startVertex = 0;
-    cout << "BFS Traversal: ";
-    auto start = high_resolution_clock::now();
-    BFS(startVertex, graph, numVertices);
-    auto end = high_resolution_clock::now();
-    auto dur = duration_cast<nanoseconds>(end - start).count();
-    cout << endl;
-    cout << "The time taken for the traversal is " << dur <<" nanoseconds." << endl;
+int main()
+{
+    int start, n;
+    cout<<"enter num of vertices: ";
+    cin>>n;
+    cout<<"enter vertices:"<<endl;
+    for(int i = 0;i<n;i++)
+        for(int j=0;j<n;j++)
+            cin>>adj[i][j];
+    cout<<"enter starting vertice: ";
+    cin>>start;
+    clock_t start_t = clock();
+    bfs(start, n);
+    clock_t end = clock();
+    double time = double(end-start_t)/CLOCKS_PER_SEC;
+    cout<<"time taken: "<<time*1000000<<" Microsseconds\n";
     return 0;
 }
